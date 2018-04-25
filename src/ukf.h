@@ -16,6 +16,10 @@ public:
   ///* initially set to false, set to true in first call of ProcessMeasurement
   bool is_initialized_;
 
+  long long previous_timestamp_;
+
+  int timeStep_;
+
   ///* if this is false, laser measurements will be ignored (except for init)
   bool use_laser_;
 
@@ -102,6 +106,7 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+  void Update(const MatrixXd& Zsig, const VectorXd& z);
 };
 
 #endif /* UKF_H */
