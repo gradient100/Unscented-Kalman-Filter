@@ -36,7 +36,7 @@ public:
   MatrixXd Xsig_pred_;
 
   ///* time when the state is true, in us
-  long long time_us_;
+  //long long time_us_;
 
   ///* Process noise standard deviation longitudinal acceleration in m/s^2
   double std_a_;
@@ -70,6 +70,18 @@ public:
 
   ///* Sigma point spreading parameter
   double lambda_;
+
+  int NIS_radar_count_;
+
+  int NIS_radar_total_;
+
+  int NIS_laser_count_;
+
+  int NIS_laser_total_;
+
+  float NIS_radar_threshold_;
+
+  float NIS_laser_threshold_;
 
 
   /**
@@ -106,7 +118,7 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
-  void Update(const MatrixXd& Zsig, const VectorXd& z);
+  void Update(const MatrixXd& Zsig, const VectorXd& z, const MatrixXd& R);
 };
 
 #endif /* UKF_H */
